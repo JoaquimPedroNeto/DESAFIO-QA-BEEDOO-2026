@@ -14,22 +14,23 @@ Esse e meu DESAFIO-QA-BEEDOO-2026
 **Aplicação testada**: [Cadastro e Listagem de Cursos](https://creative-sherbet-a51eac.netlify.app/)  
 **Período de teste**: 08/03/2026  
 **Ambiente**: Chrome v122, Windows 11, 1920x1080  
-**Ferramentas**: Google Sheets, DevTools, OBS (gravações)
+**Ferramentas**: Google Sheets, DevTools, OBS (Print de telas)
 
 ## 1. Análise inicial da aplicação
 
 Aplicação web simples com 2 fluxos principais:
 - **Página inicial**: Botões "Listar Cursos" e "Cadastrar Curso" 
-- **Cadastro (/new-course)**: Formulário com campos Nome, Descrição, Data Inicial, Data Final, Número de Vagas
+- **Cadastro (/new-course)**: Formulário com campos Nome, Descrição, Data Inicial, Data Final, Número de Vagas, tipo de curso onde dependendo do tipo: online/presencial abre o campo de cadastro para link(online) ou endereço(presencial.
+- 
 - **Listagem**: Tabela com cursos cadastrados + botão "Excluir" por curso
 
-**Riscos identificados**: Validação de dados inconsistente, persistência local frágil, UX com mensagens que não condizem com a função desejada, sem a real execução da função solicitada e desejada.
+**Riscos identificados**: Validação de dados inconsistente (tipos, ranges, obrigatoriedade), persistência local inconsistente, UX com mensagens que não condizem com a função desejada, sem a real execução da função solicitada e desejada.
 
 ## 2. Estratégia de testes
 
-**Priorização**: Fluxo crítico (cadastro → listagem → exclusão) → Validações → Casos extremos  
-**Cobertura**: 100% dos fluxos principais, 4 bugs críticos encontrados  
-**Tipos aplicados**: Funcionais, validação de dados, usabilidade, exploratórios
+**Priorização**: Fluxo end-to-end → Validações (tipos, ranges, vazios) → Persistência  
+**Cobertura**: 100% fluxos + **5 bugs críticos** encontrados  
+**Tipos**: Funcionais, validação dados, usabilidade, exploratorios
 
 **[Planilha de Casos de Teste](https://docs.google.com/spreadsheets/d/SEU_LINK_AQUI/edit?usp=sharing)**
 
@@ -41,17 +42,18 @@ Aplicação web simples com 2 fluxos principais:
 | BUG-002 | Permite Vagas = 0 ou vazias | **Alta** | Gestão de vagas falha |
 | BUG-003 | Exclusão mostra sucesso mas não remove | **Crítica** | Dados fantasmas |
 | BUG-004 | Cadastro sem nenhum campo preenchido | **Crítica** | Integridade zero |
+| BUG-005 | Sem validação tipo campos | **Alta** | Dados Poluidos |
 
 **[Evidências completas](https://drive.google.com/drive/folders/SEU_LINK_DRIVE?usp=sharing)**
 
 ## 4. Uso de IA no desafio
 
-Utilizei IA como apoio para:
+Utilizada  IA como apoio para:
 - Estruturar documentação (README, tabelas)
 - Validar cobertura de cenários com a utilização de boas práticas QA
 - Padronizar nomenclatura de bugs
 
-**Minha análise pessoal**: Executei todos os testes manualmente, onde identifiquei os 4 bugs reais da aplicação e defini severidades baseado no impacto de negócio. Ajustei sugestões da IA para refletir comportamentos específicos observados.
+**Minha análise pessoal**: Executei todos os testes manualmente, onde identifiquei os 05 bugs reais da aplicação e defini severidades baseado no impacto de negócio. Ajustei sugestões da IA para refletir comportamentos específicos observados, ajustando sugestões para a realidade da aplicação.
 
 ## 5. Lições aprendidas
 
