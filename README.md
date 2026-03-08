@@ -44,6 +44,9 @@ Aplicação web simples com 2 fluxos principais:
 | BUG-004 | Cadastro sem nenhum campo preenchido | **Crítica** | Integridade zero |
 | BUG-005 | Sem validação tipo campos | **Alta** | Dados Poluidos |
 
+**Impacto do BUG-005 na análise**
+Este bug reforça padrão: validação inexistente. Dados poluídos (números em nomes, texto em vagas) quebram relatórios, buscas futuras e UX. Severidade Alta por afetar integridade a longo-prazo da aplicação.
+
 **[Evidências completas](https://drive.google.com/drive/folders/SEU_LINK_DRIVE?usp=sharing)**
 
 ## 4. Uso de IA no desafio
