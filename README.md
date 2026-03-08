@@ -32,7 +32,7 @@ Aplicação web simples com 2 fluxos principais:
 **Cobertura**: 100% fluxos + **5 bugs críticos** encontrados  
 **Tipos**: Funcionais, validação dados, usabilidade, exploratorios
 
-**[Planilha de Casos de Teste](https://docs.google.com/spreadsheets/d/SEU_LINK_AQUI/edit?usp=sharing)**
+**[Planilha de Casos de Teste]([https://docs.google.com/spreadsheets/d/SEU_LINK_AQUI/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1hY-h1qCrzDtnJo0FyNS_NcEBM9FM_cwVTNtuejv_cKQ/edit?usp=sharing))**
 
 ## 3. Bugs encontrados (resumo)
 
