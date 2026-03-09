@@ -34,8 +34,8 @@ Aplicação web simples com 2 fluxos principais:
 
 ## Casos de Teste - Cobertura Completa
 
-**Total**: 13 casos | **Positivos**: 6 | **Negativos**: 6 | **Exploratórios**: 1  
-**Taxa de Falha**: 54% (7 falhas em 13 casos)
+**Total**: 11 casos | **Positivos**: 5 | **Negativos**: 6 | **Exploratórios**: 1  
+**Taxa de Falha**: 63.64% (7 falhas em 11 casos)
 
 ### Resumo Executivo por Módulo
 
@@ -47,7 +47,7 @@ Aplicação web simples com 2 fluxos principais:
 | Listagem | 2 | 2 | 0 | 100% ✅ |
 | Exclusão | 1 | 0 | 1 | 0% ❌ |
 | Persistência | 1 | 1 | 0 | 100% ✅ |
-| **TOTAL** | **13** | **6** | **7** | **54%** |
+| **TOTAL** | **11** | **6** | **7** | **63.64%** |
 
 ### Detalhe de Cada Caso de Teste
 
@@ -132,14 +132,14 @@ Aplicação web simples com 2 fluxos principais:
 - **Resultado Obtido**: ⚠️ PARCIAL - Cadastros OK; exclusões não removem
 - **Status**: ⚠️ PARCIAL (conectado ao BUG-003)
 
-#### **CT-010: Listagem Vazia**
-- **Tipo**: Positivo
+#### **CT-010: Tipos campos inválido**
+- **Tipo**: Negativo
 - **Módulo**: Listagem
-- **Objetivo**: UX com zero cursos
-- **Pré-condição**: Nenhum cadastro
-- **Resultado Esperado**: Mensagem "Nenhum curso" ou tabela vazia
-- **Resultado Obtido**: ✅ PASS - Tabela vazia exibida
-- **Status**: ✅ PASS
+- **Objetivo**: Testar aceitação de caracteres alfanumericos nos campos
+- **Pré-condição**: modulo de cadastro de cursos
+- **Resultado Esperado**: Não aceitação de numeros nos cadastros de nomes
+- **Resultado Obtido**:❌ FAIL - BUG-005
+- **Status**: ❌ FAIL
 
 #### **CT-011: Responsividade Mobile**
 - **Tipo**: Exploratório
@@ -150,34 +150,11 @@ Aplicação web simples com 2 fluxos principais:
 - **Resultado Obtido**: ✅ PASS - Responsivo OK
 - **Status**: ✅ PASS
 
-#### **CT-012: Campo Vagas Vazio (não preenchido)**
-- **Tipo**: Negativo
-- **Módulo**: Cadastro - Validação
-- **Objetivo**: Diferenciar vazio de 0
-- **Dados**: Vagas: "" (campo vazio)
-- **Resultado Esperado**: Rejeita; "Campo obrigatório"
-- **Resultado Obtido**: ❌ FAIL - Salvou com vazio
-- **Status**: ❌ FAIL → BUG-002 (variação)
-- **Severity**: Alta
 
-#### **CT-013: Validação de Tipo de Campos** ⭐ **NOVO**
-- **Tipo**: Negativo
-- **Módulo**: Cadastro - Validação
-- **Objetivo**: Garantir tipagem correta
-- **Pré-condição**: Formulário carregado
-- **Dados**: 
-  - Nome: "123456" (numérico em campo texto) 
-  - Vagas: "abc" (texto em campo número)
-- **Passos**: (1) Preencher; (2) Salvar
-- **Resultado Esperado**: 
-  - Rejeita "Nome: apenas letras"
-  - Rejeita "Vagas: apenas números"
-- **Resultado Obtido**: ❌ FAIL - Salvou dados misturados (123456 como nome, "abc" como vagas)
-- **Status**: ❌ FAIL → BUG-005
-- **Severity**: Alta
-- **Impacto**: Dados poluídos, relatórios quebrados, buscas inoperáveis
+
 
 **[Planilha de Casos de Teste]([https://docs.google.com/spreadsheets/d/SEU_LINK_AQUI/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1hY-h1qCrzDtnJo0FyNS_NcEBM9FM_cwVTNtuejv_cKQ/edit?usp=sharing))**
+
 
 ## 3. Bugs encontrados (resumo)
 
@@ -189,10 +166,11 @@ Aplicação web simples com 2 fluxos principais:
 | BUG-004 | Cadastro sem nenhum campo preenchido | **Crítica** | Integridade zero |
 | BUG-005 | Sem validação tipo campos | **Alta** | Dados Poluidos |
 
+
 **Impacto do BUG-005 na análise**
 Este bug reforça padrão: validação inexistente. Dados poluídos (números em nomes, texto em vagas) quebram relatórios, buscas futuras e UX. Severidade Alta por afetar integridade a longo-prazo da aplicação.
 
-**[Evidências completas]([https://drive.google.com/drive/folders/SEU_LINK_DRIVE?usp=sharing](https://drive.google.com/drive/folders/14zFOtVxGqfOiIofbeFvcHhpaEazZ9N2M?usp=sharing))**
+**[Evidências completas](https://drive.google.com/drive/folders/14zFOtVxGqfOiIofbeFvcHhpaEazZ9N2M?usp=drive_link)**
 
 ## 4. Uso de IA no desafio
 
