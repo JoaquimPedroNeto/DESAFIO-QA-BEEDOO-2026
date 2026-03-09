@@ -151,8 +151,6 @@ Aplicação web simples com 2 fluxos principais:
 - **Status**: ✅ PASS
 
 
-
-
 **[Planilha de Casos de Teste]([https://docs.google.com/spreadsheets/d/SEU_LINK_AQUI/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1hY-h1qCrzDtnJo0FyNS_NcEBM9FM_cwVTNtuejv_cKQ/edit?usp=sharing))**
 
 
@@ -171,6 +169,8 @@ Aplicação web simples com 2 fluxos principais:
 Este bug reforça padrão: validação inexistente. Dados poluídos (números em nomes, texto em vagas) quebram relatórios, buscas futuras e UX. Severidade Alta por afetar integridade a longo-prazo da aplicação.
 
 **[Evidências completas](https://drive.google.com/drive/folders/14zFOtVxGqfOiIofbeFvcHhpaEazZ9N2M?usp=drive_link)**
+**[Relatprio de Bugs(Aba 02)](https://docs.google.com/spreadsheets/d/1hY-h1qCrzDtnJo0FyNS_NcEBM9FM_cwVTNtuejv_cKQ/edit?usp=sharing)**
+
 
 ## 4. Uso de IA no desafio
 
