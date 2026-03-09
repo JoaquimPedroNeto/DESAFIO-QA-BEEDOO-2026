@@ -32,6 +32,151 @@ Aplicação web simples com 2 fluxos principais:
 **Cobertura**: 100% fluxos + **5 bugs críticos** encontrados  
 **Tipos**: Funcionais, validação dados, usabilidade, exploratorios
 
+## Casos de Teste - Cobertura Completa
+
+**Total**: 13 casos | **Positivos**: 6 | **Negativos**: 6 | **Exploratórios**: 1  
+**Taxa de Falha**: 54% (7 falhas em 13 casos)
+
+### Resumo Executivo por Módulo
+
+| Módulo | Total | Pass | Fail | Cobertura |
+|--------|-------|------|------|-----------|
+| Inicial/Navegação | 2 | 2 | 0 | 100% ✅ |
+| Cadastro (Positivo) | 1 | 1 | 0 | 100% ✅ |
+| Cadastro (Validações) | 5 | 0 | 5 | 0% ❌ |
+| Listagem | 2 | 2 | 0 | 100% ✅ |
+| Exclusão | 1 | 0 | 1 | 0% ❌ |
+| Persistência | 1 | 1 | 0 | 100% ✅ |
+| **TOTAL** | **13** | **6** | **7** | **54%** |
+
+### Detalhe de Cada Caso de Teste
+
+#### **CT-001: Carregar Aplicação**
+- **Tipo**: Positivo
+- **Módulo**: Inicial
+- **Objetivo**: Validar carregamento básico
+- **Resultado**: ✅ PASS
+
+#### **CT-002: Acessar Formulário Cadastro**
+- **Tipo**: Positivo
+- **Módulo**: Navegação
+- **Objetivo**: Verificar rota /new-course
+- **Resultado**: ✅ PASS
+
+#### **CT-003: Cadastro Completo Válido**
+- **Tipo**: Positivo
+- **Módulo**: Cadastro
+- **Objetivo**: Fluxo feliz com dados válidos
+- **Pré-condição**: Formulário carregado
+- **Dados**: Nome: "React Avançado" | Desc: "Curso 40h" | Ini: 01/04/26 | Fim: 30/04/26 | Vagas: 30
+- **Resultado Esperado**: Salva e redireciona para listagem
+- **Resultado Obtido**: ✅ PASS - Salvou corretamente
+- **Status**: ✅ PASS
+
+#### **CT-004: Data Inicial Maior que Final**
+- **Tipo**: Negativo
+- **Módulo**: Cadastro - Validação
+- **Objetivo**: Rejeitar datas incoerentes
+- **Dados**: DataInicial: 15/04/26 | DataFinal: 10/04/26
+- **Resultado Esperado**: Bloqueia; exibe erro "Data inválida"
+- **Resultado Obtido**: ❌ FAIL - Salvou curso com datas trocadas
+- **Status**: ❌ FAIL → BUG-001
+- **Severity**: Crítica
+
+#### **CT-005: Número de Vagas Igual a Zero**
+- **Tipo**: Negativo
+- **Módulo**: Cadastro - Validação
+- **Objetivo**: Garantir mínimo 1 vaga
+- **Dados**: Vagas: 0
+- **Resultado Esperado**: Rejeita; "Mínimo 1 vaga obrigatório"
+- **Resultado Obtido**: ❌ FAIL - Salvou com 0 vagas
+- **Status**: ❌ FAIL → BUG-002
+- **Severity**: Alta
+
+#### **CT-006: Cadastro Totalmente Vazio**
+- **Tipo**: Negativo
+- **Módulo**: Cadastro - Validação
+- **Objetivo**: Validar campos obrigatórios
+- **Dados**: Todos vazios
+- **Resultado Esperado**: Bloqueia; lista campos obrigatórios
+- **Resultado Obtido**: ❌ FAIL - Criou curso vazio
+- **Status**: ❌ FAIL → BUG-004
+- **Severity**: Crítica
+
+#### **CT-007: Listagem Após Cadastro**
+- **Tipo**: Positivo
+- **Módulo**: Listagem
+- **Objetivo**: Novo curso aparece na tabela
+- **Pré-condição**: Curso salvo em CT-003
+- **Resultado Esperado**: Cursos aparecem com dados corretos
+- **Resultado Obtido**: ✅ PASS - Lista atualizada
+- **Status**: ✅ PASS
+
+#### **CT-008: Excluir Curso Existente**
+- **Tipo**: Positivo
+- **Módulo**: Exclusão
+- **Objetivo**: Remover curso da lista
+- **Pré-condição**: Curso listado
+- **Passos**: (1) Clicar botão Excluir; (2) Confirmar
+- **Resultado Esperado**: Mensagem sucesso; curso remove-se da tabela
+- **Resultado Obtido**: ❌ FAIL - Mensagem OK mas curso permanece
+- **Status**: ❌ FAIL → BUG-003
+- **Severity**: Crítica
+
+#### **CT-009: Persistência Após Refresh**
+- **Tipo**: Positivo
+- **Módulo**: Persistência
+- **Objetivo**: Dados sobrevivem F5
+- **Passos**: (1) Cadastrar; (2) F5; (3) Verificar
+- **Resultado Esperado**: Cursos permanecem; excluídos removem-se
+- **Resultado Obtido**: ⚠️ PARCIAL - Cadastros OK; exclusões não removem
+- **Status**: ⚠️ PARCIAL (conectado ao BUG-003)
+
+#### **CT-010: Listagem Vazia**
+- **Tipo**: Positivo
+- **Módulo**: Listagem
+- **Objetivo**: UX com zero cursos
+- **Pré-condição**: Nenhum cadastro
+- **Resultado Esperado**: Mensagem "Nenhum curso" ou tabela vazia
+- **Resultado Obtido**: ✅ PASS - Tabela vazia exibida
+- **Status**: ✅ PASS
+
+#### **CT-011: Responsividade Mobile**
+- **Tipo**: Exploratório
+- **Módulo**: Usabilidade
+- **Objetivo**: Testar tela 320px
+- **Passos**: Redimensionar browser 320x568
+- **Resultado Esperado**: Layout fluido, sem overflow
+- **Resultado Obtido**: ✅ PASS - Responsivo OK
+- **Status**: ✅ PASS
+
+#### **CT-012: Campo Vagas Vazio (não preenchido)**
+- **Tipo**: Negativo
+- **Módulo**: Cadastro - Validação
+- **Objetivo**: Diferenciar vazio de 0
+- **Dados**: Vagas: "" (campo vazio)
+- **Resultado Esperado**: Rejeita; "Campo obrigatório"
+- **Resultado Obtido**: ❌ FAIL - Salvou com vazio
+- **Status**: ❌ FAIL → BUG-002 (variação)
+- **Severity**: Alta
+
+#### **CT-013: Validação de Tipo de Campos** ⭐ **NOVO**
+- **Tipo**: Negativo
+- **Módulo**: Cadastro - Validação
+- **Objetivo**: Garantir tipagem correta
+- **Pré-condição**: Formulário carregado
+- **Dados**: 
+  - Nome: "123456" (numérico em campo texto) 
+  - Vagas: "abc" (texto em campo número)
+- **Passos**: (1) Preencher; (2) Salvar
+- **Resultado Esperado**: 
+  - Rejeita "Nome: apenas letras"
+  - Rejeita "Vagas: apenas números"
+- **Resultado Obtido**: ❌ FAIL - Salvou dados misturados (123456 como nome, "abc" como vagas)
+- **Status**: ❌ FAIL → BUG-005
+- **Severity**: Alta
+- **Impacto**: Dados poluídos, relatórios quebrados, buscas inoperáveis
+
 **[Planilha de Casos de Teste]([https://docs.google.com/spreadsheets/d/SEU_LINK_AQUI/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1hY-h1qCrzDtnJo0FyNS_NcEBM9FM_cwVTNtuejv_cKQ/edit?usp=sharing))**
 
 ## 3. Bugs encontrados (resumo)
