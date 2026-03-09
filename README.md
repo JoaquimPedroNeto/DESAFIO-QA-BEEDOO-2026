@@ -169,6 +169,7 @@ Aplicação web simples com 2 fluxos principais:
 Este bug reforça padrão: validação inexistente. Dados poluídos (números em nomes, texto em vagas) quebram relatórios, buscas futuras e UX. Severidade Alta por afetar integridade a longo-prazo da aplicação.
 
 **[Evidências completas](https://drive.google.com/drive/folders/14zFOtVxGqfOiIofbeFvcHhpaEazZ9N2M?usp=drive_link)**
+
 **[Relatprio de Bugs(Aba 02)](https://docs.google.com/spreadsheets/d/1hY-h1qCrzDtnJo0FyNS_NcEBM9FM_cwVTNtuejv_cKQ/edit?usp=sharing)**
 
 
@@ -179,7 +180,8 @@ Utilizada  IA como apoio para:
 - Validar cobertura de cenários com a utilização de boas práticas QA
 - Padronizar nomenclatura de bugs
 
-**Minha análise pessoal**: Executei todos os testes manualmente, onde identifiquei os 05 bugs reais da aplicação e defini severidades baseado no impacto de negócio. Ajustei sugestões da IA para refletir comportamentos específicos observados, ajustando sugestões para a realidade da aplicação.
+## 4. Minha análise pessoal
+Executei todos os testes manualmente, onde identifiquei os 05 bugs reais da aplicação e defini severidades baseado no impacto que eles podem gerar ao negócio. Ajustei as sugestões da IA para refletir os comportamentos específicos observados, ajustando sugestões para a realidade da aplicação.
 
 ## 5. Lições aprendidas
 
